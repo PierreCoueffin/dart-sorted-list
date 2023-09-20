@@ -68,7 +68,11 @@ class SortedList<E> extends DelegatingList<E> {
 
   /// Finds the index where [value] should be inserted
   int _findInsertionIndex(E value) {
-    if (length == 0) return 0;
+    // Degenerate cases.
+    if (length == 0) return 0;                     // Inserting into an empty list, it will be the first element in O(1) time.
+    if (_compare(value, first) < 0) return 0;      // value < first element. O(n) to shuffle up the list, but that's as fast as I can make it.
+    if (_compare(value, last)  > 0) return length; // value > last element.  We can append to the list in O(1) time.  This is likely a very common case.
+    
     var start = 0;
     var end = length;
     var index = 0;

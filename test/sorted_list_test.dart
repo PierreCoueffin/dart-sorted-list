@@ -25,4 +25,19 @@ void main() {
     sortedList.add(3);
     expect(sortedList, equals([1, 3, 5]));
   });
+  test('Prepend to an already sorted list', () {
+      var sortedList = SortedList<int>();
+      sortedList.add(5);
+      sortedList.add(3);
+      sortedList.add(1);
+      expect(sortedList, equals([1, 3, 5]));
+  });
+  test('Append to an already sorted list', () {
+      var sortedList = SortedList<int>();
+      sortedList.add(1);
+      sortedList.add(3);
+      sortedList.add(5);        
+      expect(sortedList, equals([1, 3, 5]));
+  });
+    
 }
